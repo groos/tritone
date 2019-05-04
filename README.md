@@ -1,1 +1,1 @@
-# tritone
+# Tritone.js
