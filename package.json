@@ -1,0 +1,22 @@
+{
+  "name": "tritone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/groos/tritone.git"
+  },
+  "author": "Nick Groos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/groos/tritone/issues"
+  },
+  "homepage": "https://github.com/groos/tritone#readme",
+  "dependencies": {
+    "teoria": "^2.5.0"
+  }
+}
