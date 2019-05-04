@@ -1,5 +1,8 @@
 module.exports = {
-    getChords: (scale) => {
-        return 'list of scales';
+    diatonicChords: (key, scale) => {
+        return 'list of diatonic chords';
+    },
+    chordTypes: (scale) => {
+        return 'list of chord types for scale'
     }
 };
