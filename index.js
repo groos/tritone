@@ -1,3 +1,3 @@
 var tritone = require('./tritone.js');
 
-console.log(tritone.getChords('major'));
+console.log(tritone.scaleNotes('d', ''));
