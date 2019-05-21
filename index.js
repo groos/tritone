@@ -1,3 +1,3 @@
 var tritone = require('./tritone.js');
 
-console.log(tritone.scaleNotes('d', ''));
+console.log(tritone.scaleNotes('f', 'major'));
