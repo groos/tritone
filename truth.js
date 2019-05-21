@@ -7,7 +7,27 @@ module.exports = {
         major: {
             intervals: [2, 2, 1, 2, 2, 2, 1],
             modes: {
-                // include modes here?
+                ionian: {
+                    shift: 0,
+                },
+                dorian: {
+                    shift: 1
+                },
+                phrygian: {
+                    shift: 2
+                },
+                lydian: {
+                    shift: 3
+                },
+                mixolydian: {
+                    shift: 4
+                },
+                aeolian: {
+                    shift: 5
+                },
+                locrian: {
+                    shift: 6
+                }
             }
         },
         minor: {
