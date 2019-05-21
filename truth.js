@@ -6,9 +6,12 @@ module.exports = {
     scaleTypes: {
         major: {
             intervals: [2, 2, 1, 2, 2, 2, 1],
-            modes: [
-    
-            ]
+            modes: {
+                // include modes here?
+            }
+        },
+        minor: {
+            intervals: [2, 1, 2, 2, 1, 2, 2]
         }
     }
 }
