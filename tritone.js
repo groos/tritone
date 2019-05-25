@@ -40,6 +40,9 @@ module.exports = {
     },
     diatonicChords: (key, scale) => {
         var notes = scaleNotes(key, scale);
+
+        var chords = [];
+
         return 'list of diatonic chords';
     },
     chordTypes: (scale) => {
