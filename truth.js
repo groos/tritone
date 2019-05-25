@@ -1,3 +1,22 @@
+var _ = require('lodash');
+
+scaleIntervals = {
+    major: [2, 2, 1, 2, 2, 2, 1]
+}
+
+shiftIntervals = (scale, shift) => {
+    var scaleCopy = scaleIntervals[scale];
+    return _.slice(scaleCopy, shift, scaleCopy.length).concat(_.slice(scaleCopy, 0, shift));
+}
+
+var MajorMode = function(name, shift) {
+    this.name = name;
+    this.shift = shift;
+    this.derivedFrom = 'major';
+
+    this.intervals = shiftIntervals(this.derivedFrom, this.shift);
+}
+
 module.exports = {
     chromatic: {
         notesSharp: ['a', 'a#', 'b', 'c', 'c#', 'd', 'd#', 'e', 'f', 'f#', 'g', 'g#'],
@@ -5,33 +24,19 @@ module.exports = {
     },
     scaleTypes: {
         major: {
-            intervals: [2, 2, 1, 2, 2, 2, 1],
+            intervals: () => new Mode('ionian', 0),
             modes: {
-                ionian: {
-                    shift: 0,
-                },
-                dorian: {
-                    shift: 1
-                },
-                phrygian: {
-                    shift: 2
-                },
-                lydian: {
-                    shift: 3
-                },
-                mixolydian: {
-                    shift: 4
-                },
-                aeolian: {
-                    shift: 5
-                },
-                locrian: {
-                    shift: 6
-                }
+                ionian: new MajorMode('ionian', 0),
+                dorian: new MajorMode('dorian', 1),
+                phrygian: new MajorMode('phrygian', 2),
+                lydian: new MajorMode('lydian', 3),
+                mixolydian: new MajorMode('mixolydian', 4),
+                aeolian: new MajorMode('aeolian', 5),
+                locrian: new MajorMode('locrian', 6)
             }
         },
         minor: {
-            intervals: [2, 1, 2, 2, 1, 2, 2]
+            intervals: () => [2, 1, 2, 2, 1, 2, 2]
         }
     }
 }

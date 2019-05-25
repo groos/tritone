@@ -16,15 +16,16 @@ const convertToFlats = (notes) => {
 
 const chromaticToDiatonic = (chromaticNotes, scale, startIndex) => {
     var scaleResult = [chromaticNotes[startIndex]];
-
-    return scaleResult.concat(scale.intervals.map((interval) => {
+    return scaleResult.concat(scale.map((interval) => {
         startIndex += interval;
         return chromaticNotes[startIndex % chromaticNotes.length]; // gets an item from the list and wraps around to the start if n is larger than the list
     }));
 }
 
 const getChromaticNotes = (useFlats) => useFlats ? chromatic.notesFlat : chromatic.notesSharp;
-const getDiatonicIntervals = (scale, mode) => mode ? scaleTypes[scale][mode] : scaleTypes[scale];
+const getDiatonicIntervals = (scale, mode) => {
+    return mode ? scaleTypes[scale].modes[mode].intervals : scaleTypes[scale].intervals;
+} 
 
 module.exports = {
     scaleNotes: (key, scale, mode) => {
@@ -40,6 +41,23 @@ module.exports = {
 
         return scaleResult;
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     diatonicChords: (key, scale) => {
         var notes = scaleNotes(key, scale);
         return 'list of diatonic chords';
