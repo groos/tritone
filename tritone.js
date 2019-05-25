@@ -23,14 +23,11 @@ const chromaticToDiatonic = (chromaticNotes, scale, startIndex) => {
 }
 
 const getChromaticNotes = (useFlats) => useFlats ? chromatic.notesFlat : chromatic.notesSharp;
-const getDiatonicIntervals = (scale, mode) => {
-    return mode ? scaleTypes[scale].modes[mode].intervals : scaleTypes[scale].intervals;
-} 
 
 module.exports = {
     scaleNotes: (key, scale, mode) => {
         var chromaticNotes = getChromaticNotes(chromatic.notesFlat.includes(key));
-        var scaleIntervals = getDiatonicIntervals(scale, mode);
+        var scaleIntervals = scaleTypes[scale].modes[mode].intervals;
 
         var scaleIndex = _.findIndex(chromaticNotes, (e) => e === key.toLowerCase());
         var scaleResult = chromaticToDiatonic(chromaticNotes, scaleIntervals, scaleIndex);

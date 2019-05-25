@@ -1,7 +1,9 @@
 var _ = require('lodash');
 
 scaleIntervals = {
-    major: [2, 2, 1, 2, 2, 2, 1]
+    major: [2, 2, 1, 2, 2, 2, 1],
+    harmonicMinor: [],
+    melodicMinor: []
 }
 
 shiftIntervals = (scale, shift) => {
@@ -24,7 +26,6 @@ module.exports = {
     },
     scaleTypes: {
         major: {
-            intervals: () => new Mode('ionian', 0),
             modes: {
                 ionian: new MajorMode('ionian', 0),
                 dorian: new MajorMode('dorian', 1),
@@ -34,9 +35,6 @@ module.exports = {
                 aeolian: new MajorMode('aeolian', 5),
                 locrian: new MajorMode('locrian', 6)
             }
-        },
-        minor: {
-            intervals: () => [2, 1, 2, 2, 1, 2, 2]
         }
     }
 }
