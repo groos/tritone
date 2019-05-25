@@ -24,17 +24,15 @@ module.exports = {
         notesSharp: ['a', 'a#', 'b', 'c', 'c#', 'd', 'd#', 'e', 'f', 'f#', 'g', 'g#'],
         notesFlat: ['a', 'bb', 'b', 'c', 'db', 'd', 'eb', 'e', 'f', 'gb', 'g', 'ab']
     },
-    scaleTypes: {
-        major: {
-            modes: {
-                ionian: new MajorMode('ionian', 0),
-                dorian: new MajorMode('dorian', 1),
-                phrygian: new MajorMode('phrygian', 2),
-                lydian: new MajorMode('lydian', 3),
-                mixolydian: new MajorMode('mixolydian', 4),
-                aeolian: new MajorMode('aeolian', 5),
-                locrian: new MajorMode('locrian', 6)
-            }
-        }
+    scales: {
+        major: new MajorMode('ionian', 0),
+        minor: new MajorMode('aeolian', 5),
+        ionian: new MajorMode('ionian', 0),
+        dorian: new MajorMode('dorian', 1),
+        phrygian: new MajorMode('phrygian', 2),
+        lydian: new MajorMode('lydian', 3),
+        mixolydian: new MajorMode('mixolydian', 4),
+        aeolian: new MajorMode('aeolian', 5),
+        locrian: new MajorMode('locrian', 6)
     }
 }

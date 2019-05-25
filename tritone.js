@@ -1,5 +1,5 @@
 var _ = require('lodash');
-var {chromatic, scaleTypes} = require('./truth.js');
+var {chromatic, scales} = require('./truth.js');
 
 const convertToFlats = (notes) => {
     var compareTo = notes[0];
@@ -25,9 +25,9 @@ const chromaticToDiatonic = (chromaticNotes, scale, startIndex) => {
 const getChromaticNotes = (useFlats) => useFlats ? chromatic.notesFlat : chromatic.notesSharp;
 
 module.exports = {
-    scaleNotes: (key, scale, mode) => {
+    scaleNotes: (key, mode) => {
         var chromaticNotes = getChromaticNotes(chromatic.notesFlat.includes(key));
-        var scaleIntervals = scaleTypes[scale].modes[mode].intervals;
+        var scaleIntervals = scales[mode].intervals;
 
         var scaleIndex = _.findIndex(chromaticNotes, (e) => e === key.toLowerCase());
         var scaleResult = chromaticToDiatonic(chromaticNotes, scaleIntervals, scaleIndex);
@@ -38,23 +38,6 @@ module.exports = {
 
         return scaleResult;
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     diatonicChords: (key, scale) => {
         var notes = scaleNotes(key, scale);
         return 'list of diatonic chords';
