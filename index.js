@@ -1,6 +1,7 @@
 var tritone = require('./tritone.js');
 
-console.log('f major: ' + tritone.scaleNotes('f', 'major'));
-console.log('f ionian: ' + tritone.scaleNotes('f', 'ionian'));
-console.log('c dorian: ' + tritone.scaleNotes('c', 'dorian'));
-console.log('g mixolydian: ' + tritone.scaleNotes('g', 'mixolydian'));
+console.log('f major: ' + JSON.stringify(tritone.scaleNotes('f', 'major')));
+console.log('f ionian: ' + JSON.stringify(tritone.scaleNotes('f', 'ionian')));
+console.log('c dorian: ' + JSON.stringify(tritone.scaleNotes('c', 'dorian')));
+console.log('c major: ' + JSON.stringify(tritone.scaleNotes('c', 'major')));
+console.log('g mixolydian: ' + JSON.stringify(tritone.scaleNotes('g', 'mixolydian')));
