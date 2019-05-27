@@ -1,13 +1,45 @@
 var _ = require('lodash');
 
-scaleIntervals = {
+var scaleTruth = {
+    major: {
+        intervals: [2, 2, 1, 2, 2, 2, 1],
+        chords: ['M7', 'm7', 'm7', 'M7', '7', 'm7', 'm7b5']
+    },
+    harmonicMinor: {
+
+    },
+    melodicMinor: {
+
+    }
+}
+
+var chordTruth = {
+    'M7' : {
+        intervalsAsSteps: [],
+        intervals: []
+    },
+    'm7' : {
+        intervalsAsSteps: ['3', '7', '10'],
+        intervals: ['m3', 'p5', 'm7']
+    },
+    '7' : {
+        intervalsAsSteps: [],
+        intervals: []
+    },
+    'm7b5' : {
+        intervalsAsSteps: [],
+        intervals: []
+    }
+}
+
+var scaleIntervals = {
     major: [2, 2, 1, 2, 2, 2, 1],
     harmonicMinor: [],
     melodicMinor: []
 }
 
-shiftIntervals = (scale, shift) => {
-    var scaleCopy = scaleIntervals[scale];
+var shiftIntervals = (scale, shift) => {
+    var scaleCopy = scaleTruth[scale].intervals;
     return _.slice(scaleCopy, shift, scaleCopy.length).concat(_.slice(scaleCopy, 0, shift));
 }
 
