@@ -32,16 +32,20 @@ var chordTruth = {
     }
 }
 
-var scaleIntervals = {
-    major: [2, 2, 1, 2, 2, 2, 1],
-    harmonicMinor: [],
-    melodicMinor: []
-}
-
 var shiftIntervals = (scale, shift) => {
     var scaleCopy = scaleTruth[scale].intervals;
     return _.slice(scaleCopy, shift, scaleCopy.length).concat(_.slice(scaleCopy, 0, shift));
 }
+
+var MajorSeventhChord = function() {
+
+}
+
+var MinorSeventhChord = function() {
+
+}
+
+
 
 var MajorMode = function(name, shift) {
     this.name = name;

@@ -1,4 +1,4 @@
-var tritone = require('./tritone.js');
+var tritone = require('./src/tritone.js');
 
 console.log('f major: ' + JSON.stringify(tritone.scaleNotes('f', 'major')));
 console.log('f ionian: ' + JSON.stringify(tritone.scaleNotes('f', 'ionian')));
