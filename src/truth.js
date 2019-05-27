@@ -37,16 +37,6 @@ var shiftIntervals = (scale, shift) => {
     return _.slice(scaleCopy, shift, scaleCopy.length).concat(_.slice(scaleCopy, 0, shift));
 }
 
-var MajorSeventhChord = function() {
-
-}
-
-var MinorSeventhChord = function() {
-
-}
-
-
-
 var MajorMode = function(name, shift) {
     this.name = name;
     this.shift = shift;
