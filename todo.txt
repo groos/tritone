@@ -1,4 +1,4 @@
 - Add test module
-- Diatonic Chords
+- Refactor diatonic chords to use Chords module
 - Diatonic Arpeggios
 - Chord Inversions
