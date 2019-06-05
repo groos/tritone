@@ -10,7 +10,12 @@ var MajorMode = function(name, shift) {
     this.name = name;
     this.shift = shift;
     this.derivedFrom = 'major';
-    this.diatonic = scaleTruth[this.derivedFrom];
+
+    // shift order of these
+    var scaleCopy = _.clone(scaleTruth[this.derivedFrom]);
+    scaleCopy.chords = _.slice(scaleCopy.chords, this.shift, scaleCopy.chords.length).concat(_.slice(scaleCopy.chords, 0, this.shift));
+
+    this.diatonic = scaleCopy;
 
     this.intervals = shiftIntervals(this.derivedFrom, this.shift);
 }
