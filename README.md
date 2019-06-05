@@ -1,5 +1,4 @@
 # Tritone.js
-======
 
 Tritone.js is a super easy-to-use utility library for doing music theory information in JavaScript.
 
