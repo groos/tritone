@@ -1,38 +1,5 @@
 var _ = require('lodash');
-
-var scaleTruth = {
-    major: {
-        intervals: [2, 2, 1, 2, 2, 2, 1],
-        chords: ['M7', 'm7', 'm7', 'M7', '7', 'm7', 'm7b5']
-    },
-    harmonicMinor: {
-        intervals: [],
-        chords: []
-    },
-    melodicMinor: {
-        intervals: [],
-        chords: []
-    }
-}
-
-var chordTruth = {
-    'M7' : {
-        intervalsAsSteps: ['4', '7', '11'],
-        intervals: ['M3', 'p5', 'M7']
-    },
-    'm7' : {
-        intervalsAsSteps: ['3', '7', '10'],
-        intervals: ['m3', 'p5', 'm7']
-    },
-    '7' : {
-        intervalsAsSteps: ['4', '7', '10'],
-        intervals: ['M3', 'p5', 'm7']
-    },
-    'm7b5' : {
-        intervalsAsSteps: ['3', '6', '10'],
-        intervals: ['m3', 'b5', 'm7']
-    }
-}
+var { scaleTruth, chordTruth, chromatic } = require('./constants.js');
 
 var shiftIntervals = (scale, shift) => {
     var scaleCopy = scaleTruth[scale].intervals;
@@ -70,10 +37,10 @@ var convertToFlats = (notes) => {
 };
 
 module.exports = {
-    chromatic: {
-        notesSharp: ['a', 'a#', 'b', 'c', 'c#', 'd', 'd#', 'e', 'f', 'f#', 'g', 'g#'],
-        notesFlat: ['a', 'bb', 'b', 'c', 'db', 'd', 'eb', 'e', 'f', 'gb', 'g', 'ab']
-    },
+    chromatic: chromatic,
+    chordTruth: chordTruth,
+    chromaticToDiatonic: chromaticToDiatonic,
+    convertToFlats: convertToFlats,
     scales: {
         major: new MajorMode('ionian', 0),
         minor: new MajorMode('aeolian', 5),
@@ -84,8 +51,5 @@ module.exports = {
         mixolydian: new MajorMode('mixolydian', 4),
         aeolian: new MajorMode('aeolian', 5),
         locrian: new MajorMode('locrian', 6)
-    },
-    chordTruth: chordTruth,
-    chromaticToDiatonic: chromaticToDiatonic,
-    convertToFlats: convertToFlats
+    }
 }
