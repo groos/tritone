@@ -27,7 +27,6 @@ const Tritone = function() {
         }
 
         var diatonicChords = chordTypes.map((chordType, currentDegree) => {
-            
             return {
                 root: notes[currentDegree].toUpperCase(),
                 chordName: notes[currentDegree].toUpperCase() + chordType,
