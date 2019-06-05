@@ -5,7 +5,7 @@ const getChromaticNotes = (useFlats) => useFlats ? chromatic.notesFlat : chromat
 
 const Tritone = function() {
     this.scaleNotes = (key, mode) => {
-        var chromaticNotes = getChromaticNotes(chromatic.notesFlat.includes(key));
+        var chromaticNotes = getChromaticNotes(false);
         var scaleIntervals = scales[mode].intervals;
 
         var scaleIndex = _.findIndex(chromaticNotes, (e) => e === key.toLowerCase());
