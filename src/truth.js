@@ -6,29 +6,31 @@ var scaleTruth = {
         chords: ['M7', 'm7', 'm7', 'M7', '7', 'm7', 'm7b5']
     },
     harmonicMinor: {
-
+        intervals: [],
+        chords: []
     },
     melodicMinor: {
-
+        intervals: [],
+        chords: []
     }
 }
 
 var chordTruth = {
     'M7' : {
-        intervalsAsSteps: [],
-        intervals: []
+        intervalsAsSteps: ['4', '7', '11'],
+        intervals: ['M3', 'p5', 'M7']
     },
     'm7' : {
         intervalsAsSteps: ['3', '7', '10'],
         intervals: ['m3', 'p5', 'm7']
     },
     '7' : {
-        intervalsAsSteps: [],
-        intervals: []
+        intervalsAsSteps: ['4', '7', '10'],
+        intervals: ['M3', 'p5', 'm7']
     },
     'm7b5' : {
-        intervalsAsSteps: [],
-        intervals: []
+        intervalsAsSteps: ['3', '6', '10'],
+        intervals: ['m3', 'b5', 'm7']
     }
 }
 
@@ -41,9 +43,31 @@ var MajorMode = function(name, shift) {
     this.name = name;
     this.shift = shift;
     this.derivedFrom = 'major';
+    this.diatonic = scaleTruth[this.derivedFrom];
 
     this.intervals = shiftIntervals(this.derivedFrom, this.shift);
 }
+
+var chromaticToDiatonic = (chromaticNotes, scale, startIndex) => {
+    var scaleResult = [chromaticNotes[startIndex]];
+    return scaleResult.concat(scale.map((interval) => {
+        startIndex += interval;
+        return chromaticNotes[startIndex % chromaticNotes.length]; // gets an item from the list and wraps around to the start if n is larger than the list
+    }));
+}
+
+var convertToFlats = (notes) => {
+    var compareTo = notes[0];
+    for(var i = 1; i < notes.length; i++) {
+        if (compareTo[0] === notes[i][0]) {
+            return true;
+        }
+
+        compareTo = notes[i];
+    }
+
+    return false;
+};
 
 module.exports = {
     chromatic: {
@@ -60,5 +84,8 @@ module.exports = {
         mixolydian: new MajorMode('mixolydian', 4),
         aeolian: new MajorMode('aeolian', 5),
         locrian: new MajorMode('locrian', 6)
-    }
+    },
+    chordTruth: chordTruth,
+    chromaticToDiatonic: chromaticToDiatonic,
+    convertToFlats: convertToFlats
 }

@@ -1,5 +1,7 @@
-var tritone = require('./src/tritone.js');
+var Tritone = require('./src/tritone.js');
 
+var tritone = new Tritone();
+console.log('c major chords: ' + JSON.stringify(tritone.diatonicChords('c', 'major')));
 console.log('f major: ' + JSON.stringify(tritone.scaleNotes('f', 'major')));
 console.log('f ionian: ' + JSON.stringify(tritone.scaleNotes('f', 'ionian')));
 console.log('c dorian: ' + JSON.stringify(tritone.scaleNotes('c', 'dorian')));

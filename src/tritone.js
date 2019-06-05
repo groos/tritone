@@ -1,31 +1,10 @@
 var _ = require('lodash');
-var {chromatic, scales} = require('./truth.js');
-
-const convertToFlats = (notes) => {
-    var compareTo = notes[0];
-    for(var i = 1; i < notes.length; i++) {
-        if (compareTo[0] === notes[i][0]) {
-            return true;
-        }
-
-        compareTo = notes[i];
-    }
-
-    return false;
-}
-
-const chromaticToDiatonic = (chromaticNotes, scale, startIndex) => {
-    var scaleResult = [chromaticNotes[startIndex]];
-    return scaleResult.concat(scale.map((interval) => {
-        startIndex += interval;
-        return chromaticNotes[startIndex % chromaticNotes.length]; // gets an item from the list and wraps around to the start if n is larger than the list
-    }));
-}
+var { chromatic, scales, chromaticToDiatonic, convertToFlats } = require('./truth.js');
 
 const getChromaticNotes = (useFlats) => useFlats ? chromatic.notesFlat : chromatic.notesSharp;
 
-module.exports = {
-    scaleNotes: (key, mode) => {
+const Tritone = function() {
+    this.scaleNotes = (key, mode) => {
         var chromaticNotes = getChromaticNotes(chromatic.notesFlat.includes(key));
         var scaleIntervals = scales[mode].intervals;
 
@@ -37,15 +16,28 @@ module.exports = {
         }
 
         return scaleResult.slice(0, scaleResult.length - 1);
-    },
-    diatonicChords: (key, scale) => {
-        var notes = scaleNotes(key, scale);
+    };
 
-        var chords = [];
+    this.diatonicChords = (key, mode) => {
+        var notes = this.scaleNotes(key, mode);
+        var chordTypes = scales[mode].diatonic.chords;
 
-        return 'list of diatonic chords';
-    },
-    chordTypes: (scale) => {
-        return 'list of chord types for scale'
+        var intervalNote = (currentDegree, interval) => {
+            return notes[(currentDegree + interval) % notes.length];
+        }
+
+        var diatonicChords = chordTypes.map((chordType, currentDegree) => {
+            
+            return {
+                root: notes[currentDegree].toUpperCase(),
+                chordName: notes[currentDegree].toUpperCase() + chordType,
+                chordType: chordType,
+                notes: [intervalNote(currentDegree, 0), intervalNote(currentDegree, 2), intervalNote(currentDegree, 4), intervalNote(currentDegree, 6)]
+            };
+        });
+
+        return diatonicChords;
     }
-};
+}
+
+module.exports = Tritone;

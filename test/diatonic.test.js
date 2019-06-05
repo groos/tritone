@@ -1,4 +1,6 @@
-const tritone = require('../src/tritone.js');
+var Tritone = require('../src/tritone.js');
+
+var tritone = new Tritone();
 
 test('returns array with notes in c major scale', () => {
     expect(tritone.scaleNotes('c', 'major')).toStrictEqual(["c","d","e","f","g","a","b"]);
