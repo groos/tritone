@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/groos/tritone#readme",
   "dependencies": {
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "teoria": "^2.5.0"
   },
   "devDependencies": {
